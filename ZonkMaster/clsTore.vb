@@ -61,6 +61,13 @@
         Return TipTore.Item(TT - 1).Nr
     End Function
 
+    Public Function GetGewinnTor() As String
+        For Each Tor As clsTor In Tore
+            If Tor.Gewinn = True Then Return Tor.Nr
+        Next
+        Return 0
+    End Function
+
     Public Function Status() As String
         Dim log As String = ""
         For Each Tor As clsTor In Tore
@@ -73,7 +80,7 @@
         ' by making Generator static, we preserve the same instance '
         ' (i.e., do not create new instances with the same seed over and over) '
         ' between calls '
-        Static Generator As System.Random = New System.Random()
+        Static Generator As System.Random = New System.Random(Now.Millisecond)
         Return Generator.Next(Min, Max + 1)
     End Function
 End Class

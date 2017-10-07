@@ -40,21 +40,25 @@
             Dim MeineTore As New clsTore
             If Logging Then
                 Log = "Spiel #" & spiel & ":" & vbCrLf
-                Log &= "Init: " & vbCrLf & MeineTore.Status
+                'Log &= "Init: " & vbCrLf & MeineTore.Status
+                Log &= "Gewinn: Tor# " & MeineTore.GetGewinnTor & vbCrLf
             End If
             If RadioButton1.Checked Or RadioButton2.Checked Or RadioButton3.Checked Then
-                MeineTore.Wahl()
-                If Logging Then Log &= "Wahl: " & vbCrLf & MeineTore.Status
+                Dim w As Integer = MeineTore.Wahl()
+                'If Logging Then Log &= "Wahl: " & vbCrLf & MeineTore.Status
+                If Logging Then Log &= "Wahl: Tor# " & w & vbCrLf
             End If
             If RadioButton2.Checked Or RadioButton3.Checked Or RadioButton4.Checked Then
-                MeineTore.Tip()
-                If Logging Then Log &= "Tip: " & vbCrLf & MeineTore.Status
+                Dim t As Integer = MeineTore.Tip()
+                'If Logging Then Log &= "Tip: " & vbCrLf & MeineTore.Status
+                If Logging Then Log &= "Tip: Tor# " & t & vbCrLf
             End If
             If RadioButton3.Checked Or RadioButton4.Checked Then
-                MeineTore.Wahl()
-                If Logging Then Log &= "Wahl 2: " & vbCrLf & MeineTore.Status
+                Dim w As Integer = MeineTore.Wahl()
+                'If Logging Then Log &= "Wahl: " & vbCrLf & MeineTore.Status
+                If Logging Then Log &= "Wahl: Tor# " & w & vbCrLf
             End If
-            If Logging Then Log &= "Gewonnen: " & IIf(MeineTore.Gewonnen, "Ja", "Nein") & vbCrLf
+            If Logging Then Log &= "Gewonnen: " & IIf(MeineTore.Gewonnen, "Ja", "Nein") & vbCrLf & vbCrLf
             If MeineTore.Gewonnen Then
                 Gewonnen = Gewonnen + 1
             Else
